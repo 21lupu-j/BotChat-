@@ -48,39 +48,40 @@ class ContextChat(Chat):
 
 # === Your code should go here ===
 
-shopping_list = []
+# shopping_list = []
 
-def add_to_list(item):
-    '''
-    This function adds an item to the shopping list.
-    If given item is already in the list it returns
-    False, otherwise it returns True
-    '''
+# def add_to_list(item):
+#     '''
+#     This function adds an item to the shopping list.
+#     If given item is already in the list it returns
+#     False, otherwise it returns True
+#     '''
 
-    if item in shopping_list:
-        return False
-    else:
-        shopping_list.append(item)
-        return True
+#     if item in shopping_list:
+#         return False
+#     else:
+#         shopping_list.append(item)
+#         return True
+
+#money related questions
+
+
+
+answers = ['over 9000']
+
+
 
 pairs = [
     [
-        r'(.*)(add|put)( )(.*)( )(on|to)(.*)', 
-        [lambda matches: 'Noted!' if add_to_list(matches[3]) else '%3 is already on the list!']
+        #money related question s
+        r'((whats|how|do) (.*) (cost|fee|price|pay)',
+        ['Over 9000'],
     ],
-    [
-        r'What is on the list?',
-        [lambda matches: ','.join(shopping_list)],
-    ],
-    [
-        r'(.*)',
-        ['I am afraid I dont understand.', 'Please focus on the shopping.'],
-    ],
+
 ]
 
 if __name__ == "__main__":
-    print("Hi, my name is Bob McBot and I will help you with your shopping.")
-    print("What would you like to add to your shopping list?")
+    print("Hello, ask me if you need any help finding something. I will try my best to answer questions.")
     chat = ContextChat(pairs, reflections)
     chat.converse()
     
