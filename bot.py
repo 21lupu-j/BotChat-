@@ -73,11 +73,16 @@ answers = ['over 9000']
 
 pairs = [
     [
-        #money related question s
-        r'(whats|what\'s|what is|how|do) (.*) (cost|fee|price|pay)',
-        ['Over 9000'],
+        #money related questions
+        r'(whats|what\'s|what is|what|how|do) (.*) (cost|fee|price|pay|tuition)',
+        ['The yearly tuition of the school varies from the Pre-Kindergarten tuition which is 5,500$ + PLN 28,200 to the seniors tuition which is 9,900$ + PLN 56,000, to find out more in detail what the different tuitions are for the different years we recommend exploring the Tuitions and Applications Fees site.  Here is the link directly to the site - https://www.aswarsaw.org/admissions/school-fees'],
     ],
 
+    [
+        #location of the school related questions
+        r'(what is|what\'s|what|where|how)(.*)(campus|school|get to|addresss|located)(.*)',
+        ['The address of the school is: Warszawska 202, 05-520 Bielawa', 'The school is located a little outside of Warsaw, at: Warszawska 202, 05-520 Bielawa', 'You can find the campus at Warszawska 202, 05-520 Bielawa'],
+    ],
 ]
 
 if __name__ == "__main__":
