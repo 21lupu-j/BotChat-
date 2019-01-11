@@ -74,7 +74,7 @@ answers = ['over 9000']
 pairs = [
     [
         #money related question s
-        r'((whats|how|do) (.*) (cost|fee|price|pay)',
+        r'(whats|what\'s|how|do)(.*)(cost|fee|price|pay)(.*)',
         ['Over 9000'],
     ],
 
