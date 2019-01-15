@@ -75,7 +75,7 @@ pairs = [
     [
         #money related questions
         r'(whats|what\'s|what is|what|how|do) (.*) (cost|fee|price|pay|tuition)',
-        ['The yearly tuition of the school varies from the Pre-Kindergarten tuition which is 5,500$ + PLN 28,200 to the seniors tuition which is 9,900$ + PLN 56,000, to find out more in detail what the different tuitions are for the different years we recommend exploring the Tuitions and Applications Fees site.  Here is the link directly to the site - https://www.aswarsaw.org/admissions/school-fees'],
+        ['The yearly tuition of the school varies from the Pre-Kindergarten tuition which is 5,500$ + PLN 28,200, to the seniors tuition which is 9,900$ + PLN 56,000, to find out more in detail what the different tuitions are for the different years we recommend exploring the Tuitions and Applications Fees site.  Here is the link directly to the site - https://www.aswarsaw.org/admissions/school-fees'],
     ],
 
     [
