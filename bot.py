@@ -79,10 +79,18 @@ pairs = [
     ],
 
     [
+        #contact to the school related questions
+        r'(what is|what\'s|what|where|how)(.*)(contact|email|phone number|contacts)(|school)',
+        ['We have multiple phone numbers and emails depending on who you want to contact, all school offices have both a phone number and email for you to use. We recommend using the contact page to find further information on how to contact us and to find specific phone numbers and emails for the different offices available. Click the following link to go to the contacts page - https://www.aswarsaw.org/contact'],
+    ],
+
+    [
         #location of the school related questions
         r'(what is|what\'s|what|where|how)(.*)(campus|school|get to|addresss|located)(.*)',
         ['The address of the school is: Warszawska 202, 05-520 Bielawa', 'The school is located a little outside of Warsaw, at: Warszawska 202, 05-520 Bielawa', 'You can find the campus at Warszawska 202, 05-520 Bielawa'],
     ],
+
+
 ]
 
 if __name__ == "__main__":
