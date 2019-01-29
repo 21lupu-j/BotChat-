@@ -48,41 +48,46 @@ class ContextChat(Chat):
 
 # === Your code should go here ===
 
-# shopping_list = []
+number_to_grade = {
+  **dict.fromkeys(['pre-k','pre kindergarten','pre-kindergarten'], -1), 
+  **dict.fromkeys(['kindergarten'], 0), 
+  **dict.fromkeys(['1', '1st', '1th','one', 'first'], 1), 
+  **dict.fromkeys(['2', '2nd', '2th','two', 'second'], 2),
+  **dict.fromkeys(['3', '3rd', '3th','three', 'third'], 3), 
+  **dict.fromkeys(['4', '4th', '4th','four', 'fourth'], 4), 
+  **dict.fromkeys(['5', '5th', '5th','five', 'fifth'], 5), 
+  **dict.fromkeys(['6', '6th', '6th','six', 'sixth'], 6), 
+  **dict.fromkeys(['7', '7th', '7th','seven', 'seventh'], 7), 
+  **dict.fromkeys(['8', '8th', '8th','eight', 'eighth'], 8), 
+  **dict.fromkeys(['9', '9th', '9th','nine', 'ninth'], 9), 
+  **dict.fromkeys(['10', '10th', '10th','ten', 'tenth'], 10), 
+  **dict.fromkeys(['11', '11th', '11th','eleven', 'eleventh'], 11), 
+  **dict.fromkeys(['12', '12nd', '12th','twelve', 'twelth'], 12), 
+}
 
-# def add_to_list(item):
-#     '''
-#     This function adds an item to the shopping list.
-#     If given item is already in the list it returns
-#     False, otherwise it returns True
-#     '''
+grade_to_fee{
+    
+}
 
-#     if item in shopping_list:
-#         return False
-#     else:
-#         shopping_list.append(item)
-#         return True
+user_grade = None
 
-#money related questions
 
-user_name = "you"
-
-def define_user_name(name):
-    user_name = name.strip()
-    return "It is nice to meet you, " + user_name + "!"
-
+def define_user_grade(grade):
+    user_grade = number_to_grade[grade.strip()]
+    return "ok YOU ARE APPLYING TO " + str(user_grade) + " right"
 
 pairs = [
+
     [
         #name question #1
-        r'(.*)(name) (is)(.*)',
-        [lambda matches: define_user_name(matches[3])],
+        r"(.*) (applying to|apply to|want to apply to|going to|go to|go|applying|apply|going|be) (grade|class|year) (.*)",
+        [lambda matches: define_user_grade(matches[3])],
     ],
 
     [
-        #name question #2
-        r"(I am|I'm)(.*)",
-        [lambda matches: define_user_name(matches[1])],
+        #name question #1
+        r"(.*) (applying to|apply to|want to apply to|going to|go to|go|applying|apply|going|be) (.*) (grade|class|year)",
+        [lambda matches: define_user_grade(matches[2])],
     ],
 
     [
@@ -136,7 +141,6 @@ pairs = [
 ]
 
 if __name__ == "__main__":
-    print("Hello, ask me if you need any help finding something. I will try my best to answer questions. What is your name?")
+    print("Hello, ask me if you need any help finding something. I will try my best to answer questions. What grade do you want to apply to?")
     chat = ContextChat(pairs, reflections)
     chat.converse()
-    
