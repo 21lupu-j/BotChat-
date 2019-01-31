@@ -86,7 +86,7 @@ user_grade = None
 def define_user_grade(grade):
     global user_grade
     user_grade = number_to_grade[grade.strip()]
-    return "How can I help you?"
+    return "Cool! What would you like to know about the school?"
 
 def get_fee_by_grade():
     if user_grade == None:
@@ -100,6 +100,12 @@ pairs = [
         #money related questions
         r'(I|.*)(cost|fee|price|pay|tuition)(.*)',
         [lambda matches: get_fee_by_grade()],
+    ],
+
+    [
+        #name question #1
+        r"(.*) (applying to|apply to|want to apply to|going to|go to|go|applying|apply|going|be) (grade|class|year) (.*)",
+        [lambda matches: define_user_grade(matches[3])],
     ],
 
     [
@@ -159,6 +165,6 @@ pairs = [
 ]
 
 if __name__ == "__main__":
-    print("Hello, ask me if you need any help finding something. I will try my best to answer questions. What grade do you want to apply to?")
+    print("Hello, ask me if you need any help finding something. I will try my best to answer questions. How can I help you?")
     chat = ContextChat(pairs, reflections)
     chat.converse()
