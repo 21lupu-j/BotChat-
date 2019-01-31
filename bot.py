@@ -65,30 +65,42 @@ number_to_grade = {
   **dict.fromkeys(['12', '12nd', '12th','twelve', 'twelth'], 12), 
 }
 
-grade_to_fee{-1 : 'The annual tuition for pre kindergarten is $5,500 and 28,200 PLN. There is no registration fee',
-            0 : 'The annual tuition for kindergarten is $6,700 and 36,500 PLN. The registration fee is $1,000'
-            1 : 'The annual tuition for 1st grade is $8,400 and 49,500 PLN. The registration fee is $6,000'
-            2 : 'The annual tuition for 2nd grade is $8,400 and 49,500 PLN. The registration fee is $6,000'
-            3 : 'The annual tuition for 3rd grade is $8,400 and 49,500 PLN. The registration fee is $6,000'
-            4 : 'The annual tuition for 4th grade is $8,400 and 49,500 PLN. The registration fee is $6,000'
-            5 : 'The annual tuition for 5th grade is $8,400 and 49,500 PLN. The registration fee is $6,000'
-            6 : 'The annual tuition for 6th grade is $9,700 and 51,500 PLN. The registration fee is $6,000'
-            7 : 'The annual tuition for 7th grade is $9,700 and 51,500 PLN. The registration fee is $6,000'
-            8 : 'The annual tuition for 8th grade is $9,700 and 51,500 PLN. The registration fee is $6,000'
-            9 : 'The annual tuition for 9th grade is $9,900 and 54,500 PLN. The registration fee is $6,000'
-            10 : 'The annual tuition for 10th grade is $9,900 and 54,500 PLN. The registration fee is $6,000'
-            11 : 'The annual tuition for 11th grade is $9,900 and 56,000 PLN. The registration fee is $6,000'
-            12 : 'The annual tuition for 12th grade is $9,900 and 56,000 PLN. The registration fee is $6,000'  
+grade_to_fee = {-1 : 'The annual tuition for pre kindergarten is $5,500 and 28,200 PLN. There is no registration fee',
+            0 : 'The annual tuition for kindergarten is $6,700 and 36,500 PLN. The registration fee is $1,000',
+            1 : 'The annual tuition for 1st grade is $8,400 and 49,500 PLN. The registration fee is $6,000',
+            2 : 'The annual tuition for 2nd grade is $8,400 and 49,500 PLN. The registration fee is $6,000',
+            3 : 'The annual tuition for 3rd grade is $8,400 and 49,500 PLN. The registration fee is $6,000',
+            4 : 'The annual tuition for 4th grade is $8,400 and 49,500 PLN. The registration fee is $6,000',
+            5 : 'The annual tuition for 5th grade is $8,400 and 49,500 PLN. The registration fee is $6,000',
+            6 : 'The annual tuition for 6th grade is $9,700 and 51,500 PLN. The registration fee is $6,000',
+            7 : 'The annual tuition for 7th grade is $9,700 and 51,500 PLN. The registration fee is $6,000',
+            8 : 'The annual tuition for 8th grade is $9,700 and 51,500 PLN. The registration fee is $6,000',
+            9 : 'The annual tuition for 9th grade is $9,900 and 54,500 PLN. The registration fee is $6,000',
+            10 : 'The annual tuition for 10th grade is $9,900 and 54,500 PLN. The registration fee is $6,000',
+            11 : 'The annual tuition for 11th grade is $9,900 and 56,000 PLN. The registration fee is $6,000',
+            12 : 'The annual tuition for 12th grade is $9,900 and 56,000 PLN. The registration fee is $6,000' 
 }
 
 user_grade = None
 
-
 def define_user_grade(grade):
+    global user_grade
     user_grade = number_to_grade[grade.strip()]
-    return "ok YOU ARE APPLYING TO " + str(user_grade) + " right"
+    return "How can I help you?"
+
+def get_fee_by_grade():
+    if user_grade == None:
+        return 'The school requires a registration fee. The yearly tuition of the school varies from the Pre-Kindergarten tuition which is 5,500$ + PLN 28,200, to the seniors tuition which is 9,900$ + PLN 56,000, to find out more in detail what the different tuitions are for the different years we recommend exploring the Tuitions and Applications Fees site.  Here is the link directly to the site - https://www.aswarsaw.org/admissions/school-fees'
+    else:
+        return grade_to_fee[user_grade]
+
 
 pairs = [
+    [
+        #money related questions
+        r'(I|.*)(cost|fee|price|pay|tuition)(.*)',
+        [lambda matches: get_fee_by_grade()],
+    ],
 
     [
         #name question #1
@@ -112,12 +124,6 @@ pairs = [
         #visits/open house related questions
         r'(.*)(visit|visiting|open house)(.*)',
         ['We can be contacted to schedule an individual visit. There are also open houses held at the school, which we recommend for visiting the school. To find out more about the Open houses and how to contact for visiting the school please follow the following link to find a registration form to attend the open house and on more information on how to schedule a visit. https://www.aswarsaw.org/admissions/visit'],
-    ],
-
-    [
-        #money related questions
-        r'(I|.*)(cost|fee|price|pay|tuition)(.*)',
-        ['The school requires a registration fee. The yearly tuition of the school varies from the Pre-Kindergarten tuition which is 5,500$ + PLN 28,200, to the seniors tuition which is 9,900$ + PLN 56,000, to find out more in detail what the different tuitions are for the different years we recommend exploring the Tuitions and Applications Fees site.  Here is the link directly to the site - https://www.aswarsaw.org/admissions/school-fees'],
     ],
 
     [
