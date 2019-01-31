@@ -65,8 +65,20 @@ number_to_grade = {
   **dict.fromkeys(['12', '12nd', '12th','twelve', 'twelth'], 12), 
 }
 
-grade_to_fee{
-    
+grade_to_fee{-1 : 'The annual tuition for pre kindergarten is $5,500 and 28,200 PLN. There is no registration fee',
+            0 : 'The annual tuition for kindergarten is $6,700 and 36,500 PLN. The registration fee is $1,000'
+            1 : 'The annual tuition for 1st grade is $8,400 and 49,500 PLN. The registration fee is $6,000'
+            2 : 'The annual tuition for 2nd grade is $8,400 and 49,500 PLN. The registration fee is $6,000'
+            3 : 'The annual tuition for 3rd grade is $8,400 and 49,500 PLN. The registration fee is $6,000'
+            4 : 'The annual tuition for 4th grade is $8,400 and 49,500 PLN. The registration fee is $6,000'
+            5 : 'The annual tuition for 5th grade is $8,400 and 49,500 PLN. The registration fee is $6,000'
+            6 : 'The annual tuition for 6th grade is $9,700 and 51,500 PLN. The registration fee is $6,000'
+            7 : 'The annual tuition for 7th grade is $9,700 and 51,500 PLN. The registration fee is $6,000'
+            8 : 'The annual tuition for 8th grade is $9,700 and 51,500 PLN. The registration fee is $6,000'
+            9 : 'The annual tuition for 9th grade is $9,900 and 54,500 PLN. The registration fee is $6,000'
+            10 : 'The annual tuition for 10th grade is $9,900 and 54,500 PLN. The registration fee is $6,000'
+            11 : 'The annual tuition for 11th grade is $9,900 and 56,000 PLN. The registration fee is $6,000'
+            12 : 'The annual tuition for 12th grade is $9,900 and 56,000 PLN. The registration fee is $6,000'  
 }
 
 user_grade = None
