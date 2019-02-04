@@ -83,6 +83,8 @@ grade_to_fee = {-1 : 'The annual tuition for pre kindergarten is $5,500 and 28,2
 
 user_grade = None
 
+
+
 def define_user_grade(grade):
     global user_grade
     user_grade = number_to_grade[grade.strip()]
@@ -94,6 +96,11 @@ def get_fee_by_grade():
     else:
         return grade_to_fee[user_grade]
 
+unknown_questions = []
+
+def log_message(message):
+    unknown_questions.append(message)
+    return "I don't understand the question, please try asking it another way. You can also discuss this matter by contacting us directly: +48 22 702 8500"
 
 pairs = [
     [
@@ -160,6 +167,11 @@ pairs = [
         #location of the school related questions
         r'(what is|what\'s|what|where|how|)(.*)(campus|school|get to|addresss|located)(.*)',
         ['The address of the school is: Warszawska 202, 05-520 Bielawa', 'The school is located a little outside of Warsaw, at: Warszawska 202, 05-520 Bielawa', 'You can find the campus at Warszawska 202, 05-520 Bielawa'],
+    ],
+
+    [
+        r'(.*)',
+        [lambda matches: log_message(matches[0])],
     ],
 
 ]
